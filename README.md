@@ -16,7 +16,9 @@ bin/spark-submit \
   --conf spark.executor.instances=2 \
   --conf spark.app.name=spark-pi \
   --conf spark.kubernetes.driver.docker.image=drboyer/geo-spark-task-driver:latest \
-  --conf spark.kubernetes.executor.docker.image=kubespark/geo-spark-task-executor:latest \
+  --conf spark.kubernetes.executor.docker.image=drboyer/geo-spark-task-executor:latest \
+  --jars local:///opt/spark/examples/jars/spark-examples_2.11-2.2.0-k8s-0.5.0.jar \
+  local:///opt/spark/work-dir/pointcount.py
 ```
 
 Fill in your k8s namespace (like `default`) and cluster connection point in the `--master` param
